@@ -1,3 +1,5 @@
+%把计算出来的梯度加到原始模型上去
+
 function net = cnnapplygrads(net, opts)
     for l = 2 : numel(net.layers)
         if strcmp(net.layers{l}.type, 'c')

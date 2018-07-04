@@ -1,3 +1,5 @@
+%测试当前模型的准确率
+
 function [er, bad] = cnntest(net, x, y)
     %  feedforward
     net = cnnff(net, x);

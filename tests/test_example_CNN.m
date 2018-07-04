@@ -20,6 +20,7 @@ test_y = double(test_y');   %[test_y FROM mnist_unint8]
 
 rand('state',0) %
 
+%设置CNN的基本参数规格，如卷积、降采样层的数量，卷积核的大小、降采样的降幅
 cnn.layers = {
     struct('type', 'i')                                     %input layer
     struct('type', 'c', 'outputmaps', 6, 'kernelsize', 5)   %convolution layer
@@ -39,7 +40,7 @@ cnn = cnntrain(cnn, train_x, train_y, opts);
 
 [er, bad] = cnntest(cnn, test_x, test_y);
 
-%plot mean squared error
+% plot mean squared error
 % 绘制均方差曲线
 figure; plot(cnn.rL);
 

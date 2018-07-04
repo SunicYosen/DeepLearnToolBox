@@ -1,3 +1,4 @@
+%计算并传递神经网络的Error，并计算梯度（权重的修改量）
 function net = cnnbp(net, y)
     n = numel(net.layers);
 

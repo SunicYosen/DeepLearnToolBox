@@ -1,3 +1,5 @@
+% 完成训练前向过程
+
 function net = cnnff(net, x)
     n = numel(net.layers);
     net.layers{1}.a{1} = x;
