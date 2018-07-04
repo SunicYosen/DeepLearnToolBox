@@ -29,4 +29,5 @@ opts.numepochs =   1;
 opts.batchsize = 100;
 nn = nntrain(nn, train_x, train_y, opts);
 [er, bad] = nntest(nn, test_x, test_y);
+fprintf('er = ', num2str(er),'\n');
 assert(er < 0.16, 'Too big error');

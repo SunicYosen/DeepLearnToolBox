@@ -1,6 +1,7 @@
 function test_cnn_gradients_are_numerically_correct
-batch_x = rand(28,28,5);
-batch_y = rand(10,5);
+batch_x = rand(28,28,5);    %28 x 28 x 5 数组
+batch_y = rand(10,5);       %10 x 5 矩阵 
+
 cnn.layers = {
     struct('type', 'i') %input layer
     struct('type', 'c', 'outputmaps', 2, 'kernelsize', 5) %convolution layer
