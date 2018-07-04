@@ -1,6 +1,5 @@
 %训练CNN,把数据分成Batch，然后调用
 
-
 function net = cnntrain(net, x, y, opts)
     m = size(x, 3);
     numbatches = m / opts.batchsize;
