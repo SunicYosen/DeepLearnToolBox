@@ -1,4 +1,5 @@
 function test_cnn_gradients_are_numerically_correct
+fprintf('Enter test_cnn_gradients_are_numerically_correct ...\n')
 batch_x = rand(28,28,5);    %28 x 28 x 5 数组
 batch_y = rand(10,5);       %10 x 5 矩阵 
 
