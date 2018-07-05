@@ -1,3 +1,11 @@
+%%=========================================================================
+% 主要功能：在mnist数据库上做实验，验证工具箱的有效性
+% 算法流程：1）载入训练样本和测试样本
+%          2）设置CNN参数，并进行训练
+%          3）进行检测cnntest()
+% 注意事项：1）由于直接将所有测试样本输入会导致内存溢出，故采用一次只测试一个训练样本的测试方法
+%%=========================================================================
+
 function test_example_CNN
 fprintf('Enter test_example_CNN ...\n');
 
@@ -6,13 +14,13 @@ load mnist_uint8;
 %% 把数据转成相应的格式，并归一化。
 
 train_x = double(reshape(train_x',28,28,60000))/255;
-%% train_x' 矩阵转置,训练样本 [train_x FROM mnist_unint8] 
+%% train_x' 矩阵转置,训练样本 [train_x FROM mnist_unint8]
 
 test_x = double(reshape(test_x',28,28,10000))/255; 
 %测试样本 [mnist_uint8 样本] [test_x FROM mnist_unint8] 
 
-train_y = double(train_y'); %[train_y FROM mnist_unint8] 
-test_y = double(test_y');   %[test_y FROM mnist_unint8] 
+train_y = double(train_y');     %[train_y FROM mnist_unint8] 
+test_y = double(test_y');        %[test_y FROM mnist_unint8]
 
 % ex1 Train a 6c-2s-12c-2s Convolutional neural network 
 % will run 1 epoch in about 200 second and get around 11% error. 
@@ -20,7 +28,7 @@ test_y = double(test_y');   %[test_y FROM mnist_unint8]
 
 rand('state',0) %
 
-%设置CNN的基本参数规格，如卷积、降采样层的数量，卷积核的大小、降采样的降幅
+% 设置CNN的基本参数规格，如卷积、降采样层的数量，卷积核的大小、降采样的降幅
 cnn.layers = {
     struct('type', 'i')                                     %input layer
     struct('type', 'c', 'outputmaps', 6, 'kernelsize', 5)   %convolution layer
