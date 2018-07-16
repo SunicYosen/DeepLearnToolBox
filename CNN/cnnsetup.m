@@ -26,7 +26,6 @@ function net = cnnsetup(net, x, y)
     %%=========================================================================
 
     mapsize = size(squeeze(x(:, :, 1))); %[28, 28];一个行向量。x(:, :, 1)是一个训练样本。
-
     % 下面通过传入net这个结构体来逐层构建CNN网络
     for l = 1 : numel(net.layers)           % Layer 对于每一层
         if strcmp(net.layers{l}.type, 's')  % 降采样层sub sampling 对于当前层是采样层
@@ -39,6 +38,7 @@ function net = cnnsetup(net, x, y)
             %%=========================================================================
 
             mapsize = mapsize / net.layers{l}.scale;
+
             assert(all(floor(mapsize)==mapsize), ['Layer ' num2str(l) ' size must be integer. Actual: ' num2str(mapsize)]);
             
             for j = 1 : inputmaps           % 一个降采样层的所有输入map，b初始化为0 | 对于上一层的每一个特征图
@@ -92,7 +92,7 @@ function net = cnnsetup(net, x, y)
                     %             反正就是将卷积核每个元素初始化为[-sqrt(6 / (fan_in + fan_out)), sqrt(6 / (fan_in + fan_out))]
                     %             之间的随机数。因为这里是权值共享的，也就是对于一张特征map，所有感受野位置的卷积核都是一样的
                     %             所以只需要保存的是 inputmaps * outputmaps 个卷积核。
-                    %          2）为什么这里是inputmaps * outputmaps个卷积核？
+                    %         2）为什么这里是inputmaps * outputmaps个卷积核？
                     %%=========================================================================
 
                     %卷积核的初始化生成一个5*5的卷积核，值为-1~1之间的随机数

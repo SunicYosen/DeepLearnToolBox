@@ -54,9 +54,9 @@ function net = cnntrain(net, x, y, opts)
             
             if isempty(net.rL)
                 %代价函数值，也就是均方误差值 ，在cnnbp.m中计算初始值 net.L = 1/2* sum(net.e(:) .^ 2) / size(net.e, 2);
-                net.rL(1) = net.L;
+                net.rL(1) = net.L ;
             end
-            net.rL(end + 1) = 0.99 * net.rL(end) + 0.01 * net.L; %采用累积的方式计算累积误差
+            net.rL(end + 1) = 0.99 * net.rL(end) + 0.01 * net.L ; %采用累积的方式计算累积误差
         end
         toc;   %计时
     end
